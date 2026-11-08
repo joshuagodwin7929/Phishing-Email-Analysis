@@ -1,8 +1,3 @@
-# Phishing Email Analysis
-
-I'm building toward a SOC and detection engineering role, and this repo is where I practice on real phishing emails. Each case starts with a raw email from a public corpus and ends with a written report, a list of indicators, an ATT&CK mapping and a couple of Sigma rules.
-
-I kept my mistakes in. If you only read one file besides the report, read [docs/lessons-learned.md](docs/lessons-learned.md).
 
 ## Cases
 
