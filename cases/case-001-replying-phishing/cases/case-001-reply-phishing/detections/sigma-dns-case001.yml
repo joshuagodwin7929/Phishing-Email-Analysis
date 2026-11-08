@@ -1,0 +1,19 @@
+title: DNS Lookup for Case-001 Tracking Pixel Domain
+id: e93952ce-974a-4dc2-b08d-d0d4c0687783
+status: experimental
+description: Detects DNS lookups for the domain that served the hidden tracking pixel in case-001
+author: phishing-email-analysis project
+date: 2026/10/16
+logsource:
+  category: dns
+detection:
+  selection_exact:
+    query: 'thebandalisty.com'
+  selection_sub:
+    query|endswith: '.thebandalisty.com'
+  condition: 1 of selection_*
+falsepositives:
+  - Security team analysis of this sample
+level: low
+tags:
+  - attack.t1583.001

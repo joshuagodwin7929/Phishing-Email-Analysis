@@ -1,0 +1,1 @@
+dns.question.name:(thebandalisty.com OR *.thebandalisty.com)

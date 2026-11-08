@@ -1,0 +1,10 @@
+name: ecs-dns-field-mapping
+priority: 20
+transformations:
+  - id: map_dns_query
+    type: field_name_mapping
+    mapping:
+      query: dns.question.name
+    rule_conditions:
+      - type: logsource
+        category: dns

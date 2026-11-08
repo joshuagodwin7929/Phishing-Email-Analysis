@@ -1,0 +1,20 @@
+title: Phishing Email Case-001 Sender or Reply-To Indicators
+id: 928140f6-e8f2-4ecc-862f-3d253d802698
+status: experimental
+description: Detects mail from the sender domain or reply mailbox seen in case-001 (fake Microsoft sign-in alert)
+author: phishing-email-analysis project
+date: 2026/10/16
+logsource:
+  category: email
+detection:
+  selection_from:
+    email.from.address|endswith: '@access-accsecurity.com'
+  selection_reply:
+    email.reply_to.address: 'solutionteamrecognizd02@gmail.com'
+  condition: 1 of selection_*
+falsepositives:
+  - Security team analysis of this sample
+level: medium
+tags:
+  - attack.t1598
+  - attack.t1684.001
