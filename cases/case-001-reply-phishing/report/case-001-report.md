@@ -46,6 +46,8 @@ There is no redirect chain to trace, because the message has no web link, only a
 
 Read as a person would see it, the message is a short warning about a sign-in from an unusual location, followed by two buttons telling the reader to contact the account team.
 
+Screenshots: [headers](../evidence/screenshots/07-headers-key-fields.png), [Received chain](../evidence/screenshots/08-headers-received-chain.png), [pixel search](../evidence/screenshots/09-body-anchor-and-pixel-search.png), [mailto buttons](../evidence/screenshots/10-body-mailto-anchors-and-dig.png), [readable message](../evidence/screenshots/11-body-readable-message.png).
+
 ## 5. Infrastructure
 
 | Indicator | Lookup | Result |
@@ -55,7 +57,9 @@ Read as a person would see it, the message is a short warning about a sign-in fr
 | thebandalisty[.]com | WHOIS, DNS | Not registered today. Creation date unknown |
 | 89[.]144[.]9[.]87 | WHOIS | Block record dated 2025, so today's owner may differ from the 2023 one |
 
-A VirusTotal lookup showed 10 of 91 vendors flagging an indicator [confirm which indicator before publishing]. The OpenPhish community feed (300 lines, downloaded after following a redirect) had no matches. I couldn't use PhishTank, so I didn't check it. All of these describe the domains today, not what they served in 2023.
+A VirusTotal URL report for `hxxp://thebandalisty[.]com/` (scan dated 2026-09-24 10:57 UTC) showed 10 of 91 vendors flagging it. Eight called it phishing and two (Chong Lua Dao and Webroot) called it malicious, and ESET marked it suspicious. VirusTotal categorised the domain as phishing and parked. The OpenPhish community feed (300 lines, downloaded after following a redirect) had no matches. I couldn't use PhishTank, so I didn't check it. All of these describe the domains today, not what they served in 2023.
+
+Screenshots: WHOIS for [the From domain](../evidence/screenshots/12-whois-access-accsecurity.png), [the IP](../evidence/screenshots/13-whois-ip-block.png) and [the pixel domain](../evidence/screenshots/14-whois-dig-thebandalisty.png); VirusTotal [summary](../evidence/screenshots/15-virustotal-summary.png) and [vendors](../evidence/screenshots/16-virustotal-detection.png); [sandbox DNS](../evidence/screenshots/18-sandbox-dns-requests.png); [OpenPhish feed](../evidence/screenshots/20-openphish-300-line-feed.png).
 
 ## 6. IOC appendix
 
@@ -70,11 +74,13 @@ The indicators are in [iocs/iocs.csv](../iocs/iocs.csv). High confidence means I
 | Stealth | T1684.001 Social Engineering: Impersonation | Fake Microsoft display name and alert | High |
 | Reconnaissance | T1598 Phishing for Information | Buttons push the reader to email the attacker | Medium |
 
-I looked at T1684.002 (Email Spoofing) and dropped it, since the From domain belongs to the attacker. I also dropped T1566.001, T1566.002, T1204 and the credential-capture techniques, because the email has no attachment, no web link and no fake login page. The reasoning is in [attack/mapping.md](../attack/mapping.md).
+I looked at T1684.002 (Email Spoofing) and dropped it, since the From domain belongs to the attacker. I also dropped T1566.001, T1566.002, T1204 and the credential-capture techniques, because the email has no attachment, no web link and no fake login page. The reasoning is in [attack/mapping.md](../attack/mapping.md). The Navigator layer is [attack/layer.svg](../attack/layer.svg) (data in [layer.json](../attack/layer.json)), and the checks on attack.mitre.org are in [evidence/](../evidence/README.md).
+
+![ATT&CK Navigator layer for Case 001](../attack/layer.svg)
 
 ## 8. Detection and response
 
-Two Sigma rules cover the sender domain plus Reply-To mailbox (`detections/sigma-email-case001.yml`) and DNS lookups for the pixel domain (`detections/sigma-dns-case001.yml`). Both pass `sigma check` and convert to Lucene with the ECS pipeline. That shows they are well formed. It doesn't show that your logs carry those fields.
+Two Sigma rules cover the sender domain plus Reply-To mailbox (`detections/sigma-email-case001.yml`) and DNS lookups for the pixel domain (`detections/sigma-dns-case001.yml`). Both pass `sigma check` and convert to Lucene with the ECS pipeline ([check](../evidence/screenshots/27-sigma-check-pass.png), [convert](../evidence/screenshots/29-sigma-ecs-pipeline-and-convert.png)). That shows they are well formed. It doesn't show that your logs carry those fields.
 
 `detections/behavior-ideas.md` has rules that would survive a change of domain. I haven't tested them.
 
@@ -100,4 +106,5 @@ Two Sigma rules cover the sender domain plus Reply-To mailbox (`detections/sigma
 | sample-1001.eml | a28a794537f537758b69ba34835090f5ee0e76380bff07101811ab85a3fd84cf | No, it is public in the source corpus |
 | Raw header dump | n/a | No |
 | Raw WHOIS output | n/a | No |
+| 30 lab screenshots | see SHA256SUMS | Yes, in [evidence/](../evidence/README.md) |
 | Everything else in this repo | see SHA256SUMS | Yes |

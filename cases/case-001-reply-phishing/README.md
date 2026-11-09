@@ -15,6 +15,8 @@ The email claims to be a Microsoft alert about unusual sign-in activity. There i
 - [report/case-001-report.md](report/case-001-report.md) is the full write-up.
 - [iocs/iocs.csv](iocs/iocs.csv) has 10 defanged indicators.
 - [attack/mapping.md](attack/mapping.md) has the ATT&CK table and my verification notes.
+- [attack/layer.svg](attack/layer.svg) is the ATT&CK Navigator layer (data in `layer.json`).
 - [detections/](detections) has two Sigma rules, an ECS pipeline, the converted Lucene searches and some untested behavior ideas.
+- [evidence/](evidence/README.md) has 30 screenshots from the lab with a caption for each.
 
-I haven't published the raw sample, the raw WHOIS output or the header dump. The sample is public in its source corpus, so you can compare your own copy against the hash above.
+I haven't published the raw sample, the raw WHOIS output or the header dump. The screenshots show what I saw in them. The sample is public in its source corpus, so you can compare your own copy against the hash above.

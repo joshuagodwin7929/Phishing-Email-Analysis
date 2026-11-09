@@ -39,6 +39,10 @@ I caught it by opening each technique page on attack.mitre.org and comparing the
 - My first OpenPhish download was a 302 redirect page, not the feed. Searching a 7-line page and finding zero matches proved nothing. I re-ran it with `curl -L` and checked the line count before trusting the result.
 - I first described the SPF result as proof the sender was unauthorised. "None" only means the domain publishes no policy, which is weaker than "fail", and the report says so.
 
+## Screenshots
+
+The screenshots for these slips are in [the case evidence folder](../cases/case-001-reply-phishing/evidence/README.md): the [wrong sample](../cases/case-001-reply-phishing/evidence/screenshots/04-mistake-wrong-sample-headers.png), the [empty-file hash](../cases/case-001-reply-phishing/evidence/screenshots/05-mistake-empty-file-hash.png), the [OpenPhish redirect page](../cases/case-001-reply-phishing/evidence/screenshots/19-openphish-302-redirect-page.png) and the [fixed download](../cases/case-001-reply-phishing/evidence/screenshots/20-openphish-300-line-feed.png), and the [ATT&CK checks](../cases/case-001-reply-phishing/evidence/screenshots/26-attack-t1684-002-considered.png).
+
 ## What I take from this
 
 1. Check the thing you're about to analyse before you analyse it.

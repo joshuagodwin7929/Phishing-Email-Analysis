@@ -1,0 +1,134 @@
+{
+	"name": "case-001-reply-phishing",
+	"versions": {
+		"attack": "20",
+		"navigator": "5.3.2",
+		"layer": "4.5"
+	},
+	"domain": "enterprise-attack",
+	"description": "Case 001: fake Microsoft sign-in alert, reply-based phishing. Green = High confidence, Yellow = Medium confidence.",
+	"filters": {
+		"platforms": [
+			"Windows",
+			"IaaS",
+			"Linux",
+			"macOS",
+			"SaaS",
+			"ESXi",
+			"Network Devices",
+			"PRE",
+			"Containers",
+			"Office Suite",
+			"Identity Provider"
+		]
+	},
+	"sorting": 0,
+	"layout": {
+		"layout": "side",
+		"aggregateFunction": "average",
+		"showID": false,
+		"showName": true,
+		"showAggregateScores": false,
+		"countUnscored": false,
+		"expandedSubtechniques": "annotated"
+	},
+	"hideDisabled": false,
+	"techniques": [
+		{
+			"techniqueID": "T1583",
+			"tactic": "resource-development",
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": true
+		},
+		{
+			"techniqueID": "T1583.001",
+			"tactic": "resource-development",
+			"color": "#e6d60d",
+			"comment": "Three throwaway domains, none registered today",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1684",
+			"tactic": "stealth",
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": true
+		},
+		{
+			"techniqueID": "T1684.001",
+			"tactic": "stealth",
+			"color": "#31a354",
+			"comment": "Fake “Microsoft account team” name and sign-in alert",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1598",
+			"tactic": "reconnaissance",
+			"color": "#e6d60d",
+			"comment": "Buttons push the reader to email the attacker",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		},
+		{
+			"techniqueID": "T1585",
+			"tactic": "resource-development",
+			"color": "",
+			"comment": "",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": true
+		},
+		{
+			"techniqueID": "T1585.002",
+			"tactic": "resource-development",
+			"color": "#e6d60d",
+			"comment": "Gmail reply mailbox in Reply-To and both buttons",
+			"enabled": true,
+			"metadata": [],
+			"links": [],
+			"showSubtechniques": false
+		}
+	],
+	"gradient": {
+		"colors": [
+			"#ff6666ff",
+			"#ffe766ff",
+			"#8ec843ff"
+		],
+		"minValue": 0,
+		"maxValue": 100
+	},
+	"legendItems": [
+		{
+			"label": "HIGH",
+			"color": "#31a354"
+		},
+		{
+			"label": "MEDIUM",
+			"color": "#e6d60d"
+		}
+	],
+	"metadata": [],
+	"links": [],
+	"showTacticRowBackground": false,
+	"tacticRowBackground": "#dddddd",
+	"selectTechniquesAcrossTactics": true,
+	"selectSubtechniquesWithParent": false,
+	"selectVisibleTechniques": false
+}
