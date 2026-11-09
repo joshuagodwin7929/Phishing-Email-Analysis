@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+# never publish raw samples or live indicators
+**/raw/
+*.eml
+**/evidence/urls-live.txt
+**/evidence/att/
+**/evidence/whois-raw*.txt
+**/evidence/headers.txt
+.DS_Store
